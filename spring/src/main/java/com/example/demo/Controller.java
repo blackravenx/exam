@@ -12,7 +12,7 @@ public class Controller {
         this.repository = repository;
     }
 
-    //    CRUD read
+    //    CRUD update
     @PatchMapping("/update/{id}")
     public String update(@PathVariable Integer id, Bilet3 bilet3) {
         if (repository.existsById(id)) {
