@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма</title>
+</head>
+<body>
+<table>
+    <th>Id</th>
+    <th>Текст</th>
+    <tr th:each="i : ${bilet2}">
+        <td th:text="${i.id}"></td>
+        <td th:text="${i.text}"></td>
+    </tr>
+</table>
+<form action="#" method="post" th:action="@{/save}" th:object="${bilet2}">
+    <p><label for="text">Текст</label>
+        <textarea id="text" type="text" th:field="*{text}"></textarea></p>
+    <p><input type="submit" value="Отправить"></p>
+
+</form>
+</body>
+</html>
