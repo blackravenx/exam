@@ -1,9 +1,10 @@
 package com.example.demo;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@org.springframework.stereotype.Controller
 public class Controller {
     final
     Repository repository;
@@ -12,9 +13,9 @@ public class Controller {
         this.repository = repository;
     }
 
-    //Get vue
-    @GetMapping("/get")
-    public Iterable<Bilet6> getVue() {
-        return repository.findAll();
+    @GetMapping("/")
+    public String greaterThan5000(Model model) {
+        model.addAttribute("pokupki", repository.findAllByCostGreaterThan(5000.0));
+        return "page";
     }
 }
