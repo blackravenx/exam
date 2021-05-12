@@ -1,9 +1,9 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@org.springframework.stereotype.Controller
+@RestController
 public class Controller {
     final
     Repository repository;
@@ -12,16 +12,9 @@ public class Controller {
         this.repository = repository;
     }
 
-    //    CRUD delete
-    @PatchMapping("/delete/{id}")
-    public String delete(@PathVariable Integer id) {
-        if (repository.existsById(id)) {
-            repository.deleteById(id);
-            return "page";
-        }
-        else
-        {
-            return "page";
-        }
+    //Get vue
+    @GetMapping("/get")
+    public Iterable<Bilet6> getVue() {
+        return repository.findAll();
     }
 }
