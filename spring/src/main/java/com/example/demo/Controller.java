@@ -14,8 +14,8 @@ public class Controller {
     }
 
     @GetMapping("/")
-    public String greaterThan5000(Model model) {
-        model.addAttribute("pokupki", repository.findAllByCostGreaterThan(5000.0));
+    public String lessThan5000(Model model) {
+        model.addAttribute("pokupki", repository.findAllByCostLessThan(5000.0));
         return "page";
     }
 }
