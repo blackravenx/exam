@@ -12,11 +12,11 @@ public class Controller {
         this.repository = repository;
     }
 
-    //    CRUD read
-    @PatchMapping("/update/{id}")
-    public String update(@PathVariable Integer id, Bilet3 bilet3) {
+    //    CRUD delete
+    @PatchMapping("/delete/{id}")
+    public String delete(@PathVariable Integer id) {
         if (repository.existsById(id)) {
-            repository.save(bilet3);
+            repository.deleteById(id);
             return "page";
         }
         else
