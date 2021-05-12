@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма</title>
+</head>
+<body>
+<table>
+    <th>Id</th>
+    <th>Имя</th>
+    <th>Тел</th>
+    <tr th:each="i : ${form}">
+        <td th:text="${i.id}"></td>
+        <td th:text="${i.name}"></td>
+        <td th:text="${i.tel}"></td>
+    </tr>
+</table>
+<form action="#" method="post" th:action="@{/save_form}" th:object="${form}">
+    <p><label for="name">Имя</label>
+        <input id="name" type="text" th:field="*{name}"></p>
+    <p><label for="tel">Телефон</label>
+        <input id="tel" type="tel" th:field="*{tel}"></p>
+    <p><input type="submit" value="Отправить"></p>
+
+</form>
+</body>
+</html>
