@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(allowCredentials = "false",allowedHeaders = "*",origins = "*")
 @RestController
@@ -15,9 +12,8 @@ public class Controller {
     public Controller(Repository repository) {
         this.repository = repository;
     }
-
-    @PostMapping("save")
-    public void save(@RequestBody Bilet15 bilet15) {
-        repository.save(bilet15);
+    @GetMapping("/data")
+    public Iterable<Bilet16> get(){
+        return repository.findAll();
     }
 }

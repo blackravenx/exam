@@ -1,7 +1,13 @@
 <template>
-    <p><label for="name">Ваше имя</label></p>
-    <p><input id="name" v-model="name" type="text"></p>
-    <button @click="submit">Отправить</button>
+  <table>
+    <th>ID</th>
+    <th>имя</th>
+    <tr v-for="item in json" :key="item">
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+      </tr>
+  </table>
+
 </template>
 
 <script>
@@ -9,20 +15,13 @@
     name: 'HelloWorld',
     data() {
       return {
-        name: ''
+        json: ''
       }
     },
-    methods: {
-      submit() {
-        try {
-          this.axios.post("http://localhost:8080/save", {
-            name:this.name
-          })
-        }
-        catch(e){
-          console.log(e)
-        }
-      }
+    created() {
+      this.axios.get("http://localhost:8080/data").then((response) => {
+        this.json = response.data
+      }).catch((e) => console.log(e))
     }
   }
 </script>
