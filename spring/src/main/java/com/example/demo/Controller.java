@@ -1,12 +1,12 @@
 package com.example.demo;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
-
-@RestController
-//для REST API надо использовать @RestController
+@org.springframework.stereotype.Controller
 public class Controller {
     final
     Repository repository;
@@ -15,9 +15,13 @@ public class Controller {
         this.repository = repository;
     }
 
-    @GetMapping("/")
-//    GET метод
-    public List<Bilet13> rest_get() {
-        return repository.findAll();
+    //Здесь например, при обращении к адресу http://localhost:8080/Vanya
+//    нам в HTML  выведет информацию из табилцы Bilet13 где есть строка name "Vanya"
+
+    @GetMapping("/{name}")
+    public String findByName(Model model, @PathVariable String name) {
+        model.addAttribute("all", repository.findAll());
+        model.addAttribute("find_by_name", repository.findByName(name));
+        return "page";
     }
 }

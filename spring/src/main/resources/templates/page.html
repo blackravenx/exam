@@ -2,16 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Билет 12</title>
+    <title>Билет 14</title>
 </head>
 <body>
-<p>Если мы добавим данные в БД, то они будут выведены сюда</p>
+<p>Все результаты</p>
 <table>
-    <th>Id</th>
-    <th>Текст</th>
-    <tr th:each="i : ${bilet12}">
+    <th>ID</th>
+    <th>Name</th>
+
+    <tr th:each="i : ${all}">
         <td th:text="${i.id}"></td>
-        <td th:text="${i.text}"></td>
+        <td th:text="${i.name}"></td>
+    </tr>
+</table>
+<p>Результаты по вашему запросу</p>
+<table>
+    <th>ID</th>
+    <th>Name</th>
+    <tr th:each="i : ${find_by_name}">
+        <td th:text="${i.id}"></td>
+        <td th:text="${i.name}"></td>
     </tr>
 </table>
 </body>
