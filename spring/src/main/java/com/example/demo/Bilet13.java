@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Bilet12 {
+public class Bilet13 {
     @Id
     @GeneratedValue
     private Integer id;

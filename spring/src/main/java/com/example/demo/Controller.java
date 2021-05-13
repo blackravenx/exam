@@ -1,9 +1,12 @@
 package com.example.demo;
 
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@org.springframework.stereotype.Controller
+import java.util.List;
+
+@RestController
+//для REST API надо использовать @RestController
 public class Controller {
     final
     Repository repository;
@@ -13,8 +16,8 @@ public class Controller {
     }
 
     @GetMapping("/")
-    public String from_db_to_html(Model model) {
-        model.addAttribute("bilet12", repository.findAll());
-        return "page";
+//    GET метод
+    public List<Bilet13> rest_get() {
+        return repository.findAll();
     }
 }
