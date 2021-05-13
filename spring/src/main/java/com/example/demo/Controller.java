@@ -12,7 +12,7 @@ public class Controller {
     public Controller(Repository repository) {
         this.repository = repository;
     }
-
+ 
     @GetMapping("/")
     public String greaterThan5000(Model model) {
         model.addAttribute("pokupki", repository.findAllByCostGreaterThan(5000.0));
