@@ -14,8 +14,8 @@ public class Controller {
     }
 
     @GetMapping("form")
-    public String template(Model model, Form form) {
-        model.addAttribute("form",form);
+    public String template(Model model) {
+        model.addAttribute("form",repository.findAll());
         return "form";
     }
 
