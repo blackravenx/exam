@@ -14,7 +14,7 @@ public class Controller {
 
     @GetMapping("/")
     public String from_db_to_html(Model model, Bilet12 bilet12) {
-        model.addAttribute("bilet12", bilet12);
+        model.addAttribute("bilet12", repository.findAll());
         return "page";
     }
 }
