@@ -2,7 +2,6 @@ package com.example.demo;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @org.springframework.stereotype.Controller
 public class Controller {
@@ -14,8 +13,8 @@ public class Controller {
     }
 
     @GetMapping("/")
-    public String lessThan5000(Model model) {
-        model.addAttribute("pokupki", repository.findAllByCostLessThan(5000.0));
+    public String from_db_to_html(Model model, Bilet12 bilet12) {
+        model.addAttribute("bilet12", bilet12);
         return "page";
     }
 }

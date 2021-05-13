@@ -2,20 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Билет 11</title>
+    <title>Билет 12</title>
 </head>
 <body>
 <table>
-    <p>Покупки суммой менее 5000 тг.</p>
     <th>Id</th>
-    <th>Имя</th>
-    <th>Телефон</th>
-    <th>Сумма заказа</th>
-    <tr th:each="i : ${pokupki}">
+    <th>Текст</th>
+    <tr th:each="i : ${bilet12}">
+ <p>Если мы добавим данные в БД, то они будут выведены сюда</p>
         <td th:text="${i.id}"></td>
-        <td th:text="${i.name}"></td>
-        <td th:text="${i.tel}"></td>
-        <td th:text="${i.cost}"></td>
+        <td th:text="${i.text}"></td>
     </tr>
 </table>
 </body>
