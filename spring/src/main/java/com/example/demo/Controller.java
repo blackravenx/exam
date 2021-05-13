@@ -2,6 +2,7 @@ package com.example.demo;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @org.springframework.stereotype.Controller
@@ -14,14 +15,15 @@ public class Controller {
     }
 
     @GetMapping("form")
-    public String template(Model model) {
+    public String template(Model model,@ModelAttribute("data") Form form) {
         model.addAttribute("form",repository.findAll());
         return "form";
     }
 
     @PostMapping("save_form")
-    public String save(Form form) {
+    public String save(@ModelAttribute("data") Form form) {
         repository.save(form);
-        return "form";
+//        redirect чтобы нас с адреса /save_form перенаправило на адрес /form
+        return "redirect:/form";
     }
 }
