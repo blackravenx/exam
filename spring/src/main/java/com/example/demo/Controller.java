@@ -2,7 +2,9 @@ package com.example.demo;
 
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(allowCredentials = "false",allowedHeaders = "*",origins = "*")
+import java.util.List;
+
+@CrossOrigin(allowCredentials = "false", allowedHeaders = "*", origins = "*")
 @RestController
 public class Controller {
 
@@ -12,8 +14,13 @@ public class Controller {
     public Controller(Repository repository) {
         this.repository = repository;
     }
+
+    @PostMapping("/save")
+    public void save(@RequestBody Bilet17 bilet17) {
+        repository.save(bilet17);
+    }
     @GetMapping("/data")
-    public Iterable<Bilet16> get(){
+    public List<Bilet17> get() {
         return repository.findAll();
     }
 }

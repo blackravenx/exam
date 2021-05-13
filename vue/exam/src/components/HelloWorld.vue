@@ -1,13 +1,23 @@
 <template>
   <table>
     <th>ID</th>
-    <th>имя</th>
-    <tr v-for="item in json" :key="item">
+    <th>Имя</th>
+    <th>Телефон</th>
+    <tr v-for="item in data" :key="item">
       <td>{{item.id}}</td>
       <td>{{item.name}}</td>
-      </tr>
+      <td>{{item.tel}}</td>
+    </tr>
   </table>
+  <form action="#">
 
+    <p> <label for="name">Имя</label>
+      <input type="text" id="name" v-model="to_send.name"></p>
+    <p> <label for="tel">Телефон</label>
+      <input type="tel" id="tel" v-model="to_send.tel"></p>
+    <p><button @click="submit">Отправить</button></p>
+
+  </form>
 </template>
 
 <script>
@@ -15,13 +25,21 @@
     name: 'HelloWorld',
     data() {
       return {
-        json: ''
+        to_send: {
+          name: '',
+          tel: ''
+        },
+        data: ''
+      }
+    },
+    methods: {
+      submit() {
+        this.axios.post("http://localhost:8080/save", this.to_send).catch((e) => console.log(e))
       }
     },
     created() {
-      this.axios.get("http://localhost:8080/data").then((response) => {
-        this.json = response.data
-      }).catch((e) => console.log(e))
+      this.axios.get("http://localhost:8080/data").then((response) => this.data = response.data).catch((e) => console
+        .log(e))
     }
   }
 </script>

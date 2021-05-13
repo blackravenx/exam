@@ -5,12 +5,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Bilet16 {
+public class Bilet17 {
     @Id
     @GeneratedValue
     private Integer id;
 
     private String name;
+    private String tel;
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
 
     public Integer getId() {
         return id;
