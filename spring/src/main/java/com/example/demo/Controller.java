@@ -13,7 +13,7 @@ public class Controller {
     }
 
     //    CRUD delete
-    @PatchMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable Integer id) {
         if (repository.existsById(id)) {
             repository.deleteById(id);
